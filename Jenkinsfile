@@ -7,7 +7,8 @@ pipeline {
       steps {
         withMaven(
         // Maven installation declared in the Jenkins "Global Tool Configuration"
-        maven: '3.5.2')
+        maven: '3.5.2',
+        jdk)
          {
           sh 'mvn package'
         }
