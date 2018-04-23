@@ -5,10 +5,12 @@ pipeline {
   stages {
     stage('build') {
       steps {
-          withMaven {
-            echo 'building package'
-            sh 'mvn package'
-          }
+        withMaven(
+        // Maven installation declared in the Jenkins "Global Tool Configuration"
+        maven: '3.5.2')
+         {
+          sh 'mvn package'
+        }
       }
     }
   }
