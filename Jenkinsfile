@@ -1,14 +1,25 @@
+
 pipeline {
   agent any
+
   stages {
     stage('build') {
       steps {
-        withMaven(jdk: '1.8', maven: '3.5.2') {
-          sh '''#/bin/bash
-
-mvn package'''
+        withMaven(
+        // Maven installation declared in the Jenkins "Global Tool Configuration"
+        maven: '3.5.2',
+        // JDK installation declared in the Jenkins "Global Tool Configuration"
+        jdk: '1.8')
+         {
+          sh 'mvn package'
         }
       }
+    }
+  }
+
+  post {
+    always {
+      echo 'done'
     }
   }
 }
