@@ -4,7 +4,7 @@ pipeline {
 
   stages {
     stage('build') {
-      steps {
+      withMaven {
         echo 'building package'
         sh 'mvn package'
       }
