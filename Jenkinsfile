@@ -4,9 +4,11 @@ pipeline {
 
   stages {
     stage('build') {
-      withMaven {
-        echo 'building package'
-        sh 'mvn package'
+      steps {
+          withMaven {
+            echo 'building package'
+            sh 'mvn package'
+          }
       }
     }
   }
